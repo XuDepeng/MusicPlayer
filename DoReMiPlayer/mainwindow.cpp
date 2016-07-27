@@ -40,7 +40,7 @@ DoReMiPlayer::DoReMiPlayer(QWidget *parent)
 
 	QIcon ico("../Resources/player.png");
 	setWindowIcon(ico);
-	setWindowTitle(QStringLiteral("DoReMi"));
+	setWindowTitle(QStringLiteral("大脸鹿音乐播放器"));
 
 #if 0
 	//set background color
@@ -51,9 +51,7 @@ DoReMiPlayer::DoReMiPlayer(QWidget *parent)
 #endif
 
 	setCentralWidget(ui.gridWidget);
-	setAcceptDrops(true); // catch drops
-
-	ui.playlistTableWidget->setAcceptDrops(false);
+	setAcceptDrops(true); // catch drops	
 
 	createSkin();
 	createBar();
@@ -149,11 +147,6 @@ void DoReMiPlayer::createBar(){
 	connect(confAction, SIGNAL(triggered(bool)), this, SLOT(createSoundEff()));
 	conf->addAction(confAction);
 
-	confAction = new QAction(QIcon("../Resources/eq.png"), QStringLiteral("模式"), this);
-	confAction->setShortcut(tr("ctrl+m"));
-	connect(confAction, SIGNAL(triggered(bool)), this, SLOT(createSoundEff()));
-	conf->addAction(confAction);
-
 	// help menu
 	ui.menuBar->addMenu(QStringLiteral("帮助"));
 
@@ -213,6 +206,7 @@ void DoReMiPlayer::createSlider(){
 
 void DoReMiPlayer::createPlayList(){
 	// ui file
+	ui.playlistTableWidget->setAcceptDrops(false);
 }
 
 void DoReMiPlayer::searchPlaylist(){
@@ -379,7 +373,7 @@ void DoReMiPlayer::addSongs(){
 	QStringList songPath = QFileDialog::getOpenFileNames(this,
 		QStringLiteral("添加本地歌曲"),
 		"../",
-		QStringLiteral("音频文件 (*.mp3)"));
+		QStringLiteral("音频文件 (*.mp3 *.mp4)"));
 	if (songPath.isEmpty()){
 		QMessageBox::information(this,
 			QStringLiteral("提示"),
