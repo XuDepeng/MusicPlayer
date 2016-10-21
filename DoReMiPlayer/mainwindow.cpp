@@ -144,7 +144,7 @@ void DoReMiPlayer::createBar(){
 	confAction = new QAction(QIcon("../Resources/eq.png"), QStringLiteral("音效"), this);
 	confAction->setShortcut(tr("ctrl+c"));
 	QPointer<QMenu> conf = ui.menuBar->addMenu(QStringLiteral("设置"));
-	connect(confAction, SIGNAL(triggered(bool)), this, SLOT(createSoundEff()));
+	connect(confAction, SIGNAL(toggled(bool)), this, SLOT(createSoundEff()));
 	conf->addAction(confAction);
 
 	// help menu
@@ -282,7 +282,7 @@ void DoReMiPlayer::createWebSearch(){
 		m_webSearchDlg = WebSearchDialog::CreateWebSearch();
 
 		connect(m_webSearchDlg, SIGNAL(sigPlayCurSong(WebMusicInfo)), this, SLOT(addSong(WebMusicInfo)));
-		//connect(m_webSearchDlg, SIGNAL(sigAddCurSong(WebMusicInfo)), this, SLOT(addSong(WebMusicInfo)));
+		connect(m_webSearchDlg, SIGNAL(sigAddCurSong(WebMusicInfo)), this, SLOT(addSong(WebMusicInfo)));
 	}
 
 	m_webSearchDlg->setModal(true);
