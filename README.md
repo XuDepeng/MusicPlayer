@@ -1,5 +1,5 @@
 # DoremiPlayer
-This is just a simple music player written by C++, based on Qt,taglib(http://taglib.github.io/) and bass(http://www.un4seen.com/)
+This is just a simple music player written by C++, based on [Qt](https://www.qt.io/cn/),[taglib](http://taglib.github.io/) and [bass](http://www.un4seen.com/)
 
 DoReMiPlayer是基于Qt C++实现的，包含歌曲播放、tag查看及编辑（暂未实现）、音效设置、歌单管理和歌词显示等功能。
 
